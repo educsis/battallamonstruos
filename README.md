@@ -5,6 +5,12 @@ Se desarrolló una aplicación usando Vue.js que permite a los usuarios gestiona
 
 
 
+## Demo
+
+Este es el enlace al demo publicado con Netlify
+
+https://batallacodegtedwin.netlify.app/
+
 ## Tech Stack
 
 **Cliente:** Vue JS, Vite, CSS
