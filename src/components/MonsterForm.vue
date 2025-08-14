@@ -2,7 +2,7 @@
   <form @submit.prevent="onSubmit">
     <input type="hidden" :value="local.id" />
     <label>Nombre</label>
-    <input type="text" v-model="local.name" placeholder="Ej. Glorp">
+    <input type="text" v-model="local.name" placeholder="Ejemplo: Cthulhu Monster">
 
     <div class="row">
       <div>

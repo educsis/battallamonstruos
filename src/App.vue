@@ -1,38 +1,32 @@
 <template>
   <header class="wrap">
-    <h1>🧪⚔️ <span class="spark">Batalla</span> de <span class="spark">Monstruos</span> — Vue 3</h1>
-    <div class="stack">
-      <button class="btn ghost" @click="seed">Cargar ejemplos</button>
-      <button class="btn ghost" @click="clearAll">Limpiar</button>
-      <a class="btn secondary" href="https://github.com/new" target="_blank">Crear repo en GitHub</a>
-    </div>
+    <h1><span class="spark">Batalla</span> de <span class="spark">Monstruos</span> — CODE GT</h1>
   </header>
 
   <main class="wrap grid">
     <section class="card">
-      <h2>👾 Monstruo</h2>
-      <p class="muted">Crea, edita y elimina monstruos con sus atributos.</p>
+      <h2>Monstruo</h2>
+      <p class="muted">Llena el formulario de los monstruos para prepararlos para batallas.</p>
       <MonsterForm
         :model="form"
         :is-edit="!!form.id"
         @save="saveMonster"
         @cancel="resetForm"
       />
-      <div class="footer">Tip: Todo se guarda en tu navegador (localStorage).</div>
     </section>
 
     <section class="card">
-      <h2>📜 Lista de Monstruos</h2>
+      <h2>Monstruos</h2>
       <MonsterList
         :items="monsters"
         @edit="onEdit"
         @remove="onDelete"
       />
-      <div v-if="monsters.length === 0" class="empty">Sin monstruos aún. ¡Crea el primero! 🌟</div>
+      <div v-if="monsters.length === 0" class="empty">Aún no hay monstruos, crea el primero</div>
 
       <hr class="sep" />
 
-      <h2>⚔️ Nueva Batalla</h2>
+      <h2>Nueva batalla</h2>
       <BattlePanel
         :monsters="monsters"
         :battle="currentBattle"
@@ -41,13 +35,13 @@
 
       <hr class="sep" />
 
-      <h2>🏆 Historial de Batallas</h2>
+      <h2>Historial</h2>
       <HistoryList
         :battles="battles"
         @view="(b) => currentBattle = b"
         @remove="removeBattle"
       />
-      <div v-if="battles.length === 0" class="empty">Sin batallas registradas.</div>
+      <div v-if="battles.length === 0" class="empty">Aún no se han creado batallas.</div>
     </section>
   </main>
 </template>
@@ -202,41 +196,56 @@ function confetti(){
 
 <style>
   :root{
-    --bg: #0f1020;
-    --card: #1b1e34;
-    --ink: #e7e8ff;
-    --muted: #9aa0ff;
+    --bg: #043c6e;
+    --card: #60a85f;
+    --ink: #ebeed3;
+    --muted: #d7f2d6;
     --accent: #ff69b4;
-    --accent-2: #7cf5ff;
-    --danger: #ff4d6d;
+    --accent-2: #2d612c;
+    --danger: #9c263c;
     --success: #58f79c;
     --warning: #ffd166;
     --shadow: 0 10px 30px rgba(0,0,0,.35);
-    --radius: 18px;
+    --radius: 12px;
   }
   *{box-sizing:border-box}
+
   html,body,#app{height:100%}
+
   body{
     margin:0;
-    font-family: 'Fredoka', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    font-family: 'Sour Gummy', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
     color:var(--ink);
-    background: radial-gradient(1200px 800px at 20% 10%, #1d2040 0, #0f1020 50%) fixed;
+    background: radial-gradient(1200px 800px at 20% 10%, #125978 0, #127fad 50%) fixed;
     background-color: var(--bg);
   }
   header{
-    display:flex;align-items:center;justify-content:space-between;
-    gap:16px;padding:24px 20px 10px 20px;position:sticky;top:0;z-index:5;
+    display:flex;align-items:center;justify-content:center;
+    gap: 16px;
+    padding: 24px 20px 10px 20px;
+    position:sticky;
+    top:0;
+    z-index:5;
     backdrop-filter:saturate(1.1) blur(8px);
-    background: linear-gradient(180deg, rgba(15,16,32,.8), rgba(15,16,32,0));
   }
-  header h1{ margin:0;font-size: clamp(22px, 4vw, 36px); letter-spacing:.5px; }
+
+  header h1 { 
+    margin:0; 
+    font-size: clamp(22px, 4vw, 56px); 
+    letter-spacing:.5px; 
+  }
+
   header h1 .spark{color:var(--accent)}
+
   .wrap{max-width:1200px;margin:0 auto;padding:0 16px 40px}
+
   .grid{display:grid;gap:16px;grid-template-columns:1fr}
+
   @media(min-width:960px){ .grid{grid-template-columns: 360px 1fr} }
+
   .card{
-    background: linear-gradient(180deg, rgba(27,30,52,.9), rgba(27,30,52,.8));
-    border:1px solid rgba(255,255,255,.06);
+    background: linear-gradient(180deg, rgba(96,168, 95,.9), rgba(96,168, 95,.8));
+    border: 5px solid rgba(255,255,255,.06);
     border-radius: var(--radius);
     box-shadow: var(--shadow);
     padding:16px;
@@ -244,27 +253,33 @@ function confetti(){
   .card h2{margin:0 0 8px;font-size:22px}
   .muted{color:var(--muted);font-size:14px}
   label{display:block;font-size:14px;margin:10px 0 6px}
+
   .row{display:flex; gap:10px}
+
   .row > *{flex:1}
+
   .btn{
     display:inline-flex; align-items:center; justify-content:center;
     gap:8px; border:none; padding:10px 14px; border-radius:14px;
-    color:#12131f; background:var(--accent-2); font-weight:700; cursor:pointer;
+    color:#fff; background:var(--accent-2); font-weight:700; cursor:pointer;
     box-shadow: var(--shadow);
     transition: transform .05s ease, filter .15s ease;
     text-decoration:none;
   }
+
   .btn:hover{filter:brightness(1.05)}
   .btn:active{transform:translateY(1px)}
-  .btn.secondary{background:#a5b4fc;color:#0b0c16}
+  .btn.secondary{background: #0b3d19;color: white}
   .btn.danger{background:var(--danger);color:white}
   .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,.15);color:var(--ink)}
   .stack{display:flex;flex-wrap:wrap;gap:10px}
+
   input[type="text"], input[type="number"], select, textarea{
     width:100%; padding:10px 12px; border-radius:12px;
-    border:1px solid rgba(255,255,255,.12); background:#14162b; color:var(--ink);
+    border:1px solid rgba(255,255,255,.12); background: #e3a788; color:var(--ink);
     outline:none;
   }
+
   input[type="number"]::-webkit-inner-spin-button{opacity:1}
   .sep{margin:18px 0;border:0;border-top:1px solid rgba(255,255,255,.1)}
   .empty{padding:12px;border:1px dashed rgba(255,255,255,.15);border-radius:12px;color:var(--muted);text-align:center}
@@ -272,14 +287,17 @@ function confetti(){
 
   /* Lista de monstruos */
   .monster-list{display:grid;grid-template-columns:repeat(auto-fill, minmax(240px,1fr));gap:12px}
+
   .monster{
-    background: #12142a; border:1px solid rgba(255,255,255,.06); border-radius:16px; padding:10px;
+    background: #265c35; border:1px solid rgba(255,255,255,.06); border-radius:16px; padding:10px;
     display:flex; gap:10px; align-items:flex-start; position:relative; overflow:hidden;
   }
+
   .monster img{
     width:72px; height:72px; border-radius:12px; object-fit:cover; flex: none;
     border:2px solid rgba(255,255,255,.1);
   }
+
   .monster .name{font-weight:700}
   .stat{font-size:12px;opacity:.9}
   .badge{font-size:11px;padding:4px 8px;border-radius:999px;border:1px solid rgba(255,255,255,.18);}

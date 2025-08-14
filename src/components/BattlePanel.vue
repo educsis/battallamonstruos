@@ -20,15 +20,14 @@
 
     <div v-if="battle" class="timeline" style="margin-top:10px">
       <div class="turn">
-        <div class="hit">🏁 Resultado:</div>
+        <div class="hit">Resultado:</div>
         <div class="winner">Ganador: <strong>{{ battle.winner.name }}</strong></div>
         <div>—</div>
         <div class="loser">Perdedor: <strong>{{ battle.loser.name }}</strong></div>
       </div>
       <div v-for="(t, i) in battle.turns" :key="i" class="turn">
-        <div>🔁</div>
         <div><strong>{{ t.from }}</strong> golpea a <strong>{{ t.to }}</strong></div>
-        <div class="hit">-{{ t.dmg }} HP</div>
+        <div class="hit">-{{ t.dmg }} Hit</div>
         <div class="muted">Vida de {{ t.to }}: {{ t.toHp }}</div>
       </div>
     </div>
