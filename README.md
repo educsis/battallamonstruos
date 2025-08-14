@@ -19,7 +19,9 @@ https://batallacodegtedwin.netlify.app/
 ## Screenshots
 
 ![App Screenshot](https://batallacodegtedwin.netlify.app/screen1.png)
+
 ![App Screenshot](https://batallacodegtedwin.netlify.app/screen2.png)
+
 ![App Screenshot](https://batallacodegtedwin.netlify.app/screen3.png)
 
 
