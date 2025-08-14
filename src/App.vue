@@ -60,14 +60,15 @@ import MonsterList from './components/MonsterList.vue'
 import BattlePanel from './components/BattlePanel.vue'
 import HistoryList from './components/HistoryList.vue'
 
-// ---------- Persistencia ----------
+// ---------- Persistencia de la data ----------
 function getLS(key, def) {
   try { return JSON.parse(localStorage.getItem(key) || JSON.stringify(def)) }
   catch { return def }
 }
+
 function setLS(key, val) { localStorage.setItem(key, JSON.stringify(val)) }
 
-// Estado
+// Estado de batallas monstruos y batallas actuales
 const monsters = ref(getLS('monsters', []))
 const battles = ref(getLS('battles', []))
 const currentBattle = ref(null)
@@ -156,16 +157,16 @@ function removeBattle(at){
 }
 
 // ---------- Semillas ----------
-function seed(){
-  const seeds = [
-    {name:'Glorp', hp:18, atk:7, def:3, spd:4, img:'https://images.unsplash.com/photo-1558981403-c5f9899a28bc?q=80&w=300&auto=format&fit=crop'},
-    {name:'Zazz',  hp:14, atk:10,def:2, spd:5, img:'https://images.unsplash.com/photo-1606112219348-204d7d8b94ee?q=80&w=300&auto=format&fit=crop'},
-    {name:'Muki',  hp:22, atk:6, def:5, spd:2, img:'https://images.unsplash.com/photo-1603349206293-4a49c9bb0965?q=80&w=300&auto=format&fit=crop'},
-    {name:'Roxo',  hp:16, atk:8, def:1, spd:6, img:'https://images.unsplash.com/photo-1616626783878-3c11472edbba?q=80&w=300&auto=format&fit=crop'}
-  ].map(s => ({ id: uid(), ...s }))
-  monsters.value = seeds
-  setLS('monsters', monsters.value)
-}
+// function seed(){
+//   const seeds = [
+//     {name:'Glorp', hp:18, atk:7, def:3, spd:4, img:'https://images.unsplash.com/photo-1558981403-c5f9899a28bc?q=80&w=300&auto=format&fit=crop'},
+//     {name:'Zazz',  hp:14, atk:10,def:2, spd:5, img:'https://images.unsplash.com/photo-1606112219348-204d7d8b94ee?q=80&w=300&auto=format&fit=crop'},
+//     {name:'Muki',  hp:22, atk:6, def:5, spd:2, img:'https://images.unsplash.com/photo-1603349206293-4a49c9bb0965?q=80&w=300&auto=format&fit=crop'},
+//     {name:'Roxo',  hp:16, atk:8, def:1, spd:6, img:'https://images.unsplash.com/photo-1616626783878-3c11472edbba?q=80&w=300&auto=format&fit=crop'}
+//   ].map(s => ({ id: uid(), ...s }))
+//   monsters.value = seeds
+//   setLS('monsters', monsters.value)
+// }
 function clearAll(){
   if(!confirm('Esto borrará monstruos y batallas.')) return
   monsters.value = []
@@ -175,7 +176,7 @@ function clearAll(){
   setLS('battles', battles.value)
 }
 
-// ---------- Confeti 🎉 ----------
+// ---------- Agregar celebración ----------
 function confetti(){
   const count = 60
   for(let i=0;i<count;i++){
@@ -208,6 +209,7 @@ function confetti(){
     --shadow: 0 10px 30px rgba(0,0,0,.35);
     --radius: 12px;
   }
+
   *{box-sizing:border-box}
 
   html,body,#app{height:100%}
@@ -250,8 +252,11 @@ function confetti(){
     box-shadow: var(--shadow);
     padding:16px;
   }
+
   .card h2{margin:0 0 8px;font-size:22px}
+
   .muted{color:var(--muted);font-size:14px}
+  
   label{display:block;font-size:14px;margin:10px 0 6px}
 
   .row{display:flex; gap:10px}

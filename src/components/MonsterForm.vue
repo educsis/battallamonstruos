@@ -40,9 +40,10 @@
     import { reactive, watch } from 'vue'
 
     const props = defineProps({
-    model: { type: Object, required: true },
-    isEdit: { type: Boolean, default: false }
+        model: { type: Object, required: true },
+        isEdit: { type: Boolean, default: false }
     })
+
     const emit = defineEmits(['save','cancel'])
 
     // Copia local para no mutar el objeto original hasta guardar
@@ -53,6 +54,6 @@
     }, { deep: true, immediate: true })
 
     function onSubmit(){
-    emit('save', { ...local })
+        emit('save', { ...local })
     }
 </script>

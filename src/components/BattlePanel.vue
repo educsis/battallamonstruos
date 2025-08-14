@@ -40,8 +40,8 @@
     import { ref, watch } from 'vue'
 
     const props = defineProps({
-    monsters: { type: Array, default: () => [] },
-    battle: { type: Object, default: null }
+      monsters: { type: Array, default: () => [] },
+      battle: { type: Object, default: null }
     })
     const emit = defineEmits(['fight'])
 
@@ -49,7 +49,7 @@
     const idB = ref('')
 
     watch(() => props.monsters, (list) => {
-    // Poblar selects por defecto
+    // Llenar los selects por defecto
     if(list && list.length > 0){
         if(!idA.value) idA.value = list[0].id
         if(!idB.value) idB.value = list.length > 1 ? list[1].id : list[0].id

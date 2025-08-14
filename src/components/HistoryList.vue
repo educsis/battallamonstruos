@@ -16,7 +16,10 @@
 
 <script setup>
     import { computed } from 'vue'
+
     const props = defineProps({ battles: { type: Array, default: () => [] } })
+
     defineEmits(['view','remove'])
+    
     const reversed = computed(() => [...props.battles].reverse())
 </script>
