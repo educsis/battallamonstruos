@@ -47,13 +47,7 @@
 </template>
 
 <script setup>
-/*
-  App.vue
-  - Mantiene el estado global (monstruos y batallas).
-  - Implementa reglas de batalla por turnos.
-  - Persistencia simple en localStorage.
-  - Estilos y confeti 🎉.
-*/
+
 import { reactive, ref } from 'vue'
 import MonsterForm from './components/MonsterForm.vue'
 import MonsterList from './components/MonsterList.vue'
@@ -156,17 +150,6 @@ function removeBattle(at){
   setLS('battles', battles.value)
 }
 
-// ---------- Semillas ----------
-// function seed(){
-//   const seeds = [
-//     {name:'Glorp', hp:18, atk:7, def:3, spd:4, img:'https://images.unsplash.com/photo-1558981403-c5f9899a28bc?q=80&w=300&auto=format&fit=crop'},
-//     {name:'Zazz',  hp:14, atk:10,def:2, spd:5, img:'https://images.unsplash.com/photo-1606112219348-204d7d8b94ee?q=80&w=300&auto=format&fit=crop'},
-//     {name:'Muki',  hp:22, atk:6, def:5, spd:2, img:'https://images.unsplash.com/photo-1603349206293-4a49c9bb0965?q=80&w=300&auto=format&fit=crop'},
-//     {name:'Roxo',  hp:16, atk:8, def:1, spd:6, img:'https://images.unsplash.com/photo-1616626783878-3c11472edbba?q=80&w=300&auto=format&fit=crop'}
-//   ].map(s => ({ id: uid(), ...s }))
-//   monsters.value = seeds
-//   setLS('monsters', monsters.value)
-// }
 function clearAll(){
   if(!confirm('Esto borrará monstruos y batallas.')) return
   monsters.value = []
